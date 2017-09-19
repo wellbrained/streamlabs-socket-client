@@ -1,0 +1,30 @@
+<script src="../../dist/browser/streamlabs-socket-client.min.js"></script>
+<script>
+const token = '';
+
+// also subscribe to the 'connect' event
+const rawEvents = ['connect'];
+
+const client = new StreamlabsSocket.Client({
+  emitTests: true,
+  token,
+  rawEvents,
+});
+
+// Hook all different event listeners
+[
+  ...rawEvents,
+  'follow',
+  'subcription',
+  'resubcription',
+  'bits',
+  'host',
+  'donation',
+].forEach((eventName) => {
+  client.on(eventName, (...data) => {
+    console.log(eventName, JSON.stringify(data)); // eslint-disable-line
+  });
+});
+
+client.connect();
+</script>

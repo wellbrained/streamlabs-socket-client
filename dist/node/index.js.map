@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.js"],"names":["Client"],"mappings":";;;;;;;AAAA;;;;;;AAEA;AACO,IAAMA,8CAAN","file":"index.js","sourcesContent":["import StreamlabsClient from './streamlabs';\n\n// eslint-disable-next-line\nexport const Client = StreamlabsClient;\n"]}
