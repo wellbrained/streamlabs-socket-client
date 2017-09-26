@@ -70,13 +70,16 @@ class StreamlabsClient extends EventEmitter {
   }
 
   handleEvent (event) {
-    if (this.idTable.has(event.event_id)) {
+    const { message, type } = event;
+
+
+    // eslint-disable-next-line no-underscore-dangle
+    if (this.idTable.has(message._id)) {
       return;
     }
 
-    this.idTable.add(event.event_id);
-
-    const { message, type } = event;
+    // eslint-disable-next-line no-underscore-dangle
+    this.idTable.add(message._id);
 
     if (!this.emitTests && message && message.isTest) {
       return;
@@ -166,7 +169,6 @@ class StreamlabsClient extends EventEmitter {
           event.message.forEach((message) => {
             this.handleEvent({
               type: event.type,
-              event_id: event.event_id,
               for: event.for || '',
               message,
             });

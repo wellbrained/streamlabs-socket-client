@@ -98,6 +98,10 @@ const client = new StreamlabsSocketClient({
 
 ## The Nice Things StreamlabsSocketClient Provides
 
+### NO DUPLICATE ALERTS!!!1!eleven!1
+
+Ever noticed the socket repeats the same alert 2 or 3 times? Yep, it sucks. We've got you covered, we discard any alerts with ids we've already seen.
+
 ### Guaranteed isTest Property
 
 The Streamlabs socket doesn't always provide the `isTest` property. Sure, you could do `!!isTest`, but StreamlabsSocketClient does that for you.

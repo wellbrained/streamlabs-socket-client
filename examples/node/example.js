@@ -9,6 +9,7 @@ const rawEvents = [
   'connect_timeout',
   'disconnect',
   'error',
+  'event',
 ];
 
 const client = new StreamlabsSocketClient({

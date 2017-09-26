@@ -120,15 +120,17 @@ var StreamlabsClient = function (_EventEmitter) {
   }, {
     key: 'handleEvent',
     value: function handleEvent(event) {
-      if (this.idTable.has(event.event_id)) {
-        return;
-      }
-
-      this.idTable.add(event.event_id);
-
       var message = event.message,
           type = event.type;
 
+      // eslint-disable-next-line no-underscore-dangle
+
+      if (this.idTable.has(message._id)) {
+        return;
+      }
+
+      // eslint-disable-next-line no-underscore-dangle
+      this.idTable.add(message._id);
 
       if (!this.emitTests && message && message.isTest) {
         return;
@@ -220,7 +222,6 @@ var StreamlabsClient = function (_EventEmitter) {
             event.message.forEach(function (message) {
               _this2.handleEvent({
                 type: event.type,
-                event_id: event.event_id,
                 for: event.for || '',
                 message: message
               });
