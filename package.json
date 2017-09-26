@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-socket-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Browser/Node.js JavaScript library for interfacing with streamlabs sockets.",
   "main": "index.js",
   "scripts": {
