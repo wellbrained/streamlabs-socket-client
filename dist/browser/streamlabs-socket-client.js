@@ -12901,6 +12901,11 @@ var StreamlabsClient = function (_EventEmitter) {
       writable: true,
       value: []
     });
+    Object.defineProperty(_this, 'idTable', {
+      enumerable: true,
+      writable: true,
+      value: new Set()
+    });
     var token = options.token,
         emitTests = options.emitTests,
         rawEvents = options.rawEvents;
@@ -12962,6 +12967,12 @@ var StreamlabsClient = function (_EventEmitter) {
   }, {
     key: 'handleEvent',
     value: function handleEvent(event) {
+      if (this.idTable.has(event.event_id)) {
+        return;
+      }
+
+      this.idTable.add(event.event_id);
+
       var message = event.message,
           type = event.type;
 

@@ -8,6 +8,7 @@ class StreamlabsClient extends EventEmitter {
   token = null;
   client = null;
   rawEvents = [];
+  idTable = new Set();
 
   constructor (options) {
     super();
@@ -69,6 +70,12 @@ class StreamlabsClient extends EventEmitter {
   }
 
   handleEvent (event) {
+    if (this.idTable.has(event.event_id)) {
+      return;
+    }
+
+    this.idTable.add(event.event_id);
+
     const { message, type } = event;
 
     if (!this.emitTests && message && message.isTest) {
