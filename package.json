@@ -1,6 +1,6 @@
 {
   "name": "streamlabs-socket-client",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Browser/Node.js JavaScript library for interfacing with streamlabs sockets.",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,10 @@
     "build:node": "babel ./src --out-dir ./dist/node -s",
     "build:browser": "webpack",
     "prepare": "npm run lint && npm run clean && npm-run-all --parallel build:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tehkhop/streamlabs-socket-client.git"
   },
   "keywords": [
     "websockets",
